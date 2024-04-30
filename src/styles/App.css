@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #282c34; /* Dark background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.App-header {
+  padding: 20px;
+}
+
+.InputSelection {
+  margin-top: 20px;
+}
+
+.InputButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 10px; /* Add margin between buttons */
+}
+
+.InputButton:hover {
+  background-color: #0056b3;
+}
+
+.InputFormApp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.InputText {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  background-color: #555555; /* Adjusted input background color */
+  color: #ffffff;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.PredictionResult {
+  margin-top: 20px;
+}
+
+.SpotifyInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.App-footer {
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 14px;
+}

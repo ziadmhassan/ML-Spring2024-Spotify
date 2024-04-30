@@ -1,0 +1,57 @@
+/* InputForm.css */
+
+.InputFormContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.InputForm {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #333333;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.InputLabel {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.GridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.GridInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #666666;
+  border-radius: 4px;
+  background-color: #555555;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.PredictButton {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.PredictButton:hover {
+  background-color: #0056b3;
+}
