@@ -38,39 +38,41 @@ function App() {
       let requestData = {};
 
       if (inputMode === 'manual') {
-        let ohe = inputData.slice(11, 15);
-        let notohe = inputData.slice(0, 11);
-        // one hot encode the last 4 features
-        let oneHotEncoded = [
-          ohe[0] === '0' ? 1 : 0,
-          ohe[0] === '1' ? 1 : 0,
-          ohe[0] === '3' ? 1 : 0,
-          ohe[0] === '4' ? 1 : 0,
-          ohe[0] === '5' ? 1 : 0,
-          ohe[1] === '0' ? 1 : 0,
-          ohe[1] === '1' ? 1 : 0,
-          ohe[2] === '0' ? 1 : 0,
-          ohe[2] === '1' ? 1 : 0,
-          ohe[2] === '2' ? 1 : 0,
-          ohe[2] === '3' ? 1 : 0,
-          ohe[2] === '4' ? 1 : 0,
-          ohe[2] === '5' ? 1 : 0,
-          ohe[2] === '6' ? 1 : 0,
-          ohe[2] === '7' ? 1 : 0,
-          ohe[2] === '8' ? 1 : 0,
-          ohe[2] === '9' ? 1 : 0,
-          ohe[2] === '10' ? 1 : 0,
-          ohe[2] === '11' ? 1 : 0,
-          ohe[3] === '0' ? 1 : 0,
-          ohe[3] === '1' ? 1 : 0
-        ];
+        // let ohe = inputData.slice(11, 15);
+        // let notohe = inputData.slice(0, 11);
+        // // one hot encode the last 4 features
+        // let oneHotEncoded = [
+        //   ohe[0] === '0' ? 1 : 0,
+        //   ohe[0] === '1' ? 1 : 0,
+        //   ohe[0] === '3' ? 1 : 0,
+        //   ohe[0] === '4' ? 1 : 0,
+        //   ohe[0] === '5' ? 1 : 0,
+        //   ohe[1] === '0' ? 1 : 0,
+        //   ohe[1] === '1' ? 1 : 0,
+        //   ohe[2] === '0' ? 1 : 0,
+        //   ohe[2] === '1' ? 1 : 0,
+        //   ohe[2] === '2' ? 1 : 0,
+        //   ohe[2] === '3' ? 1 : 0,
+        //   ohe[2] === '4' ? 1 : 0,
+        //   ohe[2] === '5' ? 1 : 0,
+        //   ohe[2] === '6' ? 1 : 0,
+        //   ohe[2] === '7' ? 1 : 0,
+        //   ohe[2] === '8' ? 1 : 0,
+        //   ohe[2] === '9' ? 1 : 0,
+        //   ohe[2] === '10' ? 1 : 0,
+        //   ohe[2] === '11' ? 1 : 0,
+        //   ohe[3] === '0' ? 1 : 0,
+        //   ohe[3] === '1' ? 1 : 0
+        // ];
         requestData = {
           inputMode: 'manual',
           data: {
-            sample: notohe.concat(oneHotEncoded)
+            sample: inputData
           }
         };
       } else if (inputMode === 'spotify') {
+        // print the spotify link
+        console.log(spotifyLink.trim());
         requestData = {
           inputMode: 'spotify',
           data: {
