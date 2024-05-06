@@ -6,10 +6,10 @@ function App() {
   let audiofeatures = [
     'duration_ms', 'release_date', 'danceability', 'energy', 'loudness',
     'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence',
-    'tempo', 'time_signature', 'mode', 'key', 'explicit'
+    'tempo', 'time_signature', 'mode', 'key', 'explicit', 'popularity'
   ];
 
-  const [inputData, setInputData] = useState(new Array(15).fill(''));
+  const [inputData, setInputData] = useState(new Array(16).fill(''));
   const [prediction, setPrediction] = useState(null);
   const [inputMode, setInputMode] = useState(null);
   const [spotifyLink, setSpotifyLink] = useState('');
@@ -38,36 +38,25 @@ function App() {
       let requestData = {};
 
       if (inputMode === 'manual') {
-        // let ohe = inputData.slice(11, 15);
-        // let notohe = inputData.slice(0, 11);
-        // // one hot encode the last 4 features
-        // let oneHotEncoded = [
-        //   ohe[0] === '0' ? 1 : 0,
-        //   ohe[0] === '1' ? 1 : 0,
-        //   ohe[0] === '3' ? 1 : 0,
-        //   ohe[0] === '4' ? 1 : 0,
-        //   ohe[0] === '5' ? 1 : 0,
-        //   ohe[1] === '0' ? 1 : 0,
-        //   ohe[1] === '1' ? 1 : 0,
-        //   ohe[2] === '0' ? 1 : 0,
-        //   ohe[2] === '1' ? 1 : 0,
-        //   ohe[2] === '2' ? 1 : 0,
-        //   ohe[2] === '3' ? 1 : 0,
-        //   ohe[2] === '4' ? 1 : 0,
-        //   ohe[2] === '5' ? 1 : 0,
-        //   ohe[2] === '6' ? 1 : 0,
-        //   ohe[2] === '7' ? 1 : 0,
-        //   ohe[2] === '8' ? 1 : 0,
-        //   ohe[2] === '9' ? 1 : 0,
-        //   ohe[2] === '10' ? 1 : 0,
-        //   ohe[2] === '11' ? 1 : 0,
-        //   ohe[3] === '0' ? 1 : 0,
-        //   ohe[3] === '1' ? 1 : 0
-        // ];
         requestData = {
-          inputMode: 'manual',
-          data: {
-            sample: inputData
+          inputMode: 'manual',          
+          sample: {
+            duration_ms: inputData[0],
+            release_date: inputData[1],
+            danceability: inputData[2],
+            energy: inputData[3],
+            loudness: inputData[4],
+            speechiness: inputData[5],
+            acousticness: inputData[6],
+            instrumentalness: inputData[7],
+            liveness: inputData[8],
+            valence: inputData[9],
+            tempo: inputData[10],
+            time_signature: inputData[11],
+            mode: inputData[12],
+            key: inputData[13],
+            explicit: inputData[14],
+            popularity: inputData[15]
           }
         };
       } else if (inputMode === 'spotify') {
@@ -75,17 +64,16 @@ function App() {
         console.log(spotifyLink.trim());
         requestData = {
           inputMode: 'spotify',
-          data: {
-            spotifyLink: spotifyLink.trim()
-          }
+          data: spotifyLink
         };
       }
-      console.log(requestData.data); 
+      console.log(requestData); 
       const apiUrl = 'https://ziadm.pythonanywhere.com/predict';
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept-Charset': 'UTF-8'
         },
         body: JSON.stringify(requestData)
       });
@@ -123,17 +111,18 @@ function App() {
               <div className="GridContainer">
                 {audiofeatures.map((value, index) => (
                   <input
-                    key={audiofeatures[index]}
-                    type="text"
-                    value={inputData[index]} // Bind input value to state
-                    onChange={(e) => setInputData((prevData) => {
-                      const updatedData = [...prevData];
-                      updatedData[index] = e.target.value;
-                      return updatedData;
-                    })}
-                    placeholder={value} // Use audio feature name as placeholder
-                    className="GridInput"
-                    required
+                  key={audiofeatures[index]}
+                  type="text"
+                  value={inputData[index]} // Bind input value to state
+                  onChange={(e) => setInputData((prevData) => {
+                    const updatedData = [...prevData];
+                    updatedData[index] = e.target.value;
+                    return updatedData;
+                  })}
+                  placeholder={value} // Use audio feature name as placeholder
+                  className="GridInput"
+                  // Conditional class based on the value of 'value'
+                  {...(value === 'popularity' ? {} : { required: true })}
                   />
                 ))}
               </div>
