@@ -87,7 +87,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestData.data)
+        body: JSON.stringify(requestData)
       });
 
       if (!response.ok) {
